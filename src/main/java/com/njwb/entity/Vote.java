@@ -15,4 +15,8 @@ public class Vote {
 	private int status; //状态 2为进行中 9为暂停
 	private Date create_time;
 	private Date end_time;
+	public Object getEnd_time() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

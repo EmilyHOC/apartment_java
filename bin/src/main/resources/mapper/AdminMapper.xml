@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.njwb.dao.AdminDao" >
+<resultMap type="Admin" id="AdminResult">
+		<id property="id" column="id" />
+		<result property="admin_name" column="admin_name" />
+		<result property="admin_pwd" column="admin_pwd" />
+		<result property="admin_kind" column="admin_kind" />
+	</resultMap>
+	
+	<select id="queryByName" resultType="Admin" parameterType="String">
+		select * from t_admin where admin_name=#{admin_name}
+	</select>
+
+	<select id="query" parameterType="Admin"  resultType="Admin">
+		select * from t_admin where  admin_name=#{admin_name} and admin_pwd=#{admin_pwd}
+	</select>
+
+  <select id="getAllAdmin" resultMap="AdminResult">
+        select * from t_admin where admin_kind = "admin"
+    </select>
+    
+      <select id="getAllUser" resultMap="AdminResult">
+        select * from t_admin where admin_kind = "user"
+    </select>
+    
+    <update id="mod" parameterType="Admin">
+        update t_admin set admin_pwd=#{admin_pwd} where admin_name=#{admin_name}
+    </update>
+    <insert id="adminRegist" parameterType="Admin">
+        insert into t_admin(admin_name,admin_pwd,admin_kind) values(#{admin_name},#{admin_pwd},#{admin_kind})
+    </insert>
+       <update id="updateUser" parameterType="Admin">
+        update t_admin set admin_pwd=#{admin_pwd},admin_name=#{admin_name},admin_kind=#{admin_kind} where id=#{id}
+    </update>
+      <delete id="removeUser" parameterType="Integer">
+        delete from t_admin where id=#{id}
+    </delete>
+ </mapper>

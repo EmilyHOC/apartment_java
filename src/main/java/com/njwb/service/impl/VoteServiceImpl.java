@@ -17,11 +17,7 @@ import com.njwb.entity.Message;
 import com.njwb.entity.Vote;
 import com.njwb.exception.VoteException;
 import com.njwb.service.VoteService;
-/**
- * 投票业务接口实现类
- * @author meng
- *
- */
+
 @Service
 public class VoteServiceImpl implements VoteService{
 	@Autowired
@@ -34,15 +30,15 @@ public class VoteServiceImpl implements VoteService{
 	@Transactional
 	@Override
 	public void createVote(Vote vote) throws VoteException {
-		try {
-			//查询投票是否正在进行
-			if(dao.queryByNameAndStatus(vote.getVote_name()) != null) {
-				throw new VoteException("当前投票正在进行");
-			}
-			dao.add(vote);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			//查询投票是否正在进行
+//			if(dao.queryByNameAndStatus(vote.getVote_name()) != null) {
+//				throw new VoteException("当前投票正在进行");
+//			}
+//			dao.add(vote);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
 	}
 	/**
 	 * 修改投票
@@ -203,57 +199,57 @@ public class VoteServiceImpl implements VoteService{
 	 * 
 	 */
 public void voteOne(Map<String, String> data) throws VoteException{
-	Vote vote = null;
-	try {
-		vote = dao.queryByNameAndStatus(data.get("vote_name"));
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
-	if(vote == null) {
-		throw new VoteException("投票不存在或已结束");
-	}
-	List<Message> messages =JSON.parseObject(vote.getVote_messages(), new TypeReference<ArrayList<Message>>(){});
-	
-	for(Message message:messages) {
-		if((message.getOption_id()+"").equals(data.get("option_id"))) {
-			message.vote();
-			break;
-		}
-	}
-	vote.setVote_messages(JSONObject.toJSON(messages).toString());
-	try {
-		dao.mod(vote);
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
+//	Vote vote = null;
+//	try {
+//		vote = dao.queryByNameAndStatus(data.get("vote_name"));
+//	} catch (SQLException e) {
+//		e.printStackTrace();
+//	}
+//	if(vote == null) {
+//		throw new VoteException("投票不存在或已结束");
+//	}
+//	List<Message> messages =JSON.parseObject(vote.getVote_messages(), new TypeReference<ArrayList<Message>>(){});
+//	
+//	for(Message message:messages) {
+//		if((message.getOption_id()+"").equals(data.get("option_id"))) {
+//			message.vote();
+//			break;
+//		}
+//	}
+//	vote.setVote_messages(JSONObject.toJSON(messages).toString());
+//	try {
+//		dao.mod(vote);
+//	} catch (SQLException e) {
+//		e.printStackTrace();
+//	}
 		
 }
 	
 
 public void updateStatus() {
-	long t1 = System.currentTimeMillis();
-	List<Vote> voteList = new ArrayList<Vote>();
-	try {
-		voteList = dao.queryAll();
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
-	for(Vote vote:voteList) {
-		if(t1 < vote.getEnd_time().getTime()&& t1 >=
-				vote.getCreate_time().getTime())
-		{
-			vote.setStatus(2);
-		}
-		else {
-			vote.setStatus(9);
-		}
-		try {
-			dao.mod(vote);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
+//	long t1 = System.currentTimeMillis();
+//	List<Vote> voteList = new ArrayList<Vote>();
+//	try {
+//		voteList = dao.queryAll();
+//	} catch (SQLException e) {
+//		e.printStackTrace();
+//	}
+//	for(Vote vote:voteList) {
+//		if(t1 < vote.getEnd_time().getTime()&& t1 >=
+//				vote.getCreate_time().getTime())
+//		{
+//			vote.setStatus(2);
+//		}
+//		else {
+//			vote.setStatus(9);
+//		}
+//		try {
+//			dao.mod(vote);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//	}
+//	
 	
 	
 	

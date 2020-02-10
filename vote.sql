@@ -69,9 +69,40 @@ INSERT INTO `t_user_info` VALUES (1,'10025','user1','男','17777777777','pwd1'),
 /*!40000 ALTER TABLE `t_user_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
+
+
+--
+-- Table structure for table `t_room_info`
+--
+
+DROP TABLE IF EXISTS `t_room_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `t_room_info` (
+  `roomid` int(11) NOT NULL AUTO_INCREMENT,
+  `room_address` varchar(255) DEFAULT NULL,
+  `room_usage` varchar(255) DEFAULT NULL,
+  `room_area` varchar(255) DEFAULT NULL,
+  `room_rend` varchar DEFAULT NULL,
+  `create_time`  date DEFAULT NULL,
+  PRIMARY KEY (`roomid`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_user_info`
+--
+
+LOCK TABLES `t_room_info` WRITE;
+/*!40000 ALTER TABLE `t_user_info` DISABLE KEYS */;
+INSERT INTO `t_room_info` VALUES (001,'江苏省南京市江宁区翠屏清华园55幢1104','5年','55','1','2010-5-5'),(002,'江苏省南京市江宁区翠屏国际水杉苑4幢330','15年','33','1','2010-6-6');
+/*!40000 ALTER TABLE `t_user_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
 --
 -- Table structure for table `t_vote`
 --
+
 
 DROP TABLE IF EXISTS `t_vote`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;

@@ -21,25 +21,25 @@ public class VoteController {
 	private VoteService voteService;
 	
 
-	@RequestMapping("/api/vote/create") @CrossOrigin("*") 
-	public Object createVote(@RequestBody Vote vote) throws VoteException {
-		try {
-			long t1 = System.currentTimeMillis();
-			if(t1 < vote.getEnd_time().getTime()&& t1 >=vote.getCreate_time().getTime())
-			{
-				vote.setStatus(2);
-			}
-			else {
-				vote.setStatus(9);
-			}
-			voteService.createVote(vote);
-			voteService.updateStatus();
-			Return<List<Vote>> re = new Return<List<Vote>>(0,voteService.queryVoteAll());
-			return re;
-		} catch (VoteException e) {
-			return JSONObject.toJSON(new Return<Integer>(1,e.getMessage(),0));
-		}
-	}
+//	@RequestMapping("/api/vote/create") @CrossOrigin("*") 
+//	public Object createVote(@RequestBody Vote vote) throws VoteException {
+//		try {
+//			long t1 = System.currentTimeMillis();
+//			if(t1 < vote.getEnd_time().getTime()&& t1 >=vote.getCreate_time().getTime())
+//			{
+//				vote.setStatus(2);
+//			}
+//			else {
+//				vote.setStatus(9);
+//			}
+//			voteService.createVote(vote);
+//			voteService.updateStatus();
+//			Return<List<Vote>> re = new Return<List<Vote>>(0,voteService.queryVoteAll());
+//			return re;
+//		} catch (VoteException e) {
+//			return JSONObject.toJSON(new Return<Integer>(1,e.getMessage(),0));
+//		}
+//	}
 	
 	
 	@RequestMapping("/api/vote/modify") @CrossOrigin("*") 
@@ -53,16 +53,16 @@ public class VoteController {
 		}
 	}
 
-	@RequestMapping("/api/vote/delete") @CrossOrigin("*") 
-	public Object deleteVote(@RequestBody Vote vote) throws VoteException {
-		try {
-			voteService.deleteVote(vote.getId());
-			Return<Integer> re = new Return<Integer>(0,0);
-			return re;
-		} catch (VoteException e) {
-			return JSONObject.toJSON(new Return<Integer>(1,e.getMessage(),0));
-		}
-	}
+//	@RequestMapping("/api/vote/delete") @CrossOrigin("*") 
+//	public Object deleteVote(@RequestBody Vote vote) throws VoteException {
+//		try {
+//			voteService.deleteVote(vote.getId());
+//			Return<Integer> re = new Return<Integer>(0,0);
+//			return re;
+//		} catch (VoteException e) {
+//			return JSONObject.toJSON(new Return<Integer>(1,e.getMessage(),0));
+//		}
+//	}
 	
 	
 	@RequestMapping("/api/vote/getAll") @CrossOrigin("*") 
@@ -76,16 +76,16 @@ public class VoteController {
 		}
 	}
 	
-	@RequestMapping("/api/vote/getByUser") @CrossOrigin("*") 
-	public Object getVoteByUser(@RequestBody User user) throws VoteException {
-		try {
-			Return<List<Vote>> re = new Return<List<Vote>>(0,voteService.queryVoteListByUserId(user.getUser_id()));
-			return re;
-		} catch (VoteException e) {
-			return JSONObject.toJSON(new Return<Integer>(1,e.getMessage(),0));
-		}
-	}
-	
+//	@RequestMapping("/api/vote/getByUser") @CrossOrigin("*") 
+//	public Object getVoteByUser(@RequestBody User user) throws VoteException {
+//		try {
+//			Return<List<Vote>> re = new Return<List<Vote>>(0,voteService.queryVoteListByUserId(user.getUser_id()));
+//			return re;
+//		} catch (VoteException e) {
+//			return JSONObject.toJSON(new Return<Integer>(1,e.getMessage(),0));
+//		}
+//	}
+//	
 	//模糊查找
 	@RequestMapping("/api/vote/getByName") @CrossOrigin("*") 
 	public Object getVoteByName(@RequestBody HashMap<String,String> key) throws VoteException {
@@ -118,36 +118,36 @@ public class VoteController {
 		}
 	}
 	
-	@RequestMapping("/api/vote/getByUserNow") @CrossOrigin("*") 
-	public Object getVoteByUserNow(@RequestBody User user) throws VoteException {
-		try {
-			Return<List<Vote>> re = new Return<List<Vote>>(0,voteService.queryVoteListNowByUserId(user.getUser_id()));
-			return re;
-		} catch (VoteException e) {
-			return JSONObject.toJSON(new Return<Integer>(1,e.getMessage(),0));
-		}
-	}
+//	@RequestMapping("/api/vote/getByUserNow") @CrossOrigin("*") 
+//	public Object getVoteByUserNow(@RequestBody User user) throws VoteException {
+//		try {
+//			Return<List<Vote>> re = new Return<List<Vote>>(0,voteService.queryVoteListNowByUserId(user.getUser_id()));
+//			return re;
+//		} catch (VoteException e) {
+//			return JSONObject.toJSON(new Return<Integer>(1,e.getMessage(),0));
+//		}
+//	}
 
 
-	@RequestMapping("/api/vote/getByUserFinish") @CrossOrigin("*") 
-	public Object getVoteByUserFinish(@RequestBody User user) throws VoteException {
-		try {
-			Return<List<Vote>> re = new Return<List<Vote>>(0,voteService.queryVoteListHistoryByUserId(user.getUser_id()));
-			return re;
-		} catch (VoteException e) {
-			return JSONObject.toJSON(new Return<Integer>(1,e.getMessage(),0));
-		}
-	}
+//	@RequestMapping("/api/vote/getByUserFinish") @CrossOrigin("*") 
+//	public Object getVoteByUserFinish(@RequestBody User user) throws VoteException {
+//		try {
+//			Return<List<Vote>> re = new Return<List<Vote>>(0,voteService.queryVoteListHistoryByUserId(user.getUser_id()));
+//			return re;
+//		} catch (VoteException e) {
+//			return JSONObject.toJSON(new Return<Integer>(1,e.getMessage(),0));
+//		}
+//	}
 	
-	@RequestMapping("/api/vote/searchByName") @CrossOrigin("*") 
-	public Object searchByName(@RequestBody Vote vote) throws VoteException {
-		try {
-			Return<Vote> re = new Return<Vote>(0,voteService.queryVoteByNameAndStatus(vote.getVote_name()));
-			return re;
-		} catch (VoteException e) {
-			return JSONObject.toJSON(new Return<Integer>(1,e.getMessage(),0));
-		}
-	}
+//	@RequestMapping("/api/vote/searchByName") @CrossOrigin("*") 
+//	public Object searchByName(@RequestBody Vote vote) throws VoteException {
+//		try {
+//			Return<Vote> re = new Return<Vote>(0,voteService.queryVoteByNameAndStatus(vote.getVote_name()));
+//			return re;
+//		} catch (VoteException e) {
+//			return JSONObject.toJSON(new Return<Integer>(1,e.getMessage(),0));
+//		}
+//	}
 	
 	@RequestMapping("/api/vote/voteOne") @CrossOrigin("*") 
 	public Object voteOne(@RequestBody Map<String, String> data) throws VoteException {

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.njwb.dao.RoomDao" >
+	<resultMap type="Room" id="RoomResult">
+		<id property="id" column="id" />
+		<result property="admin_name" column="admin_name" />
+		<result property="admin_pwd" column="admin_pwd" />
+		<result property="admin_kind" column="admin_kind" />
+	</resultMap>
+	
+	<select id="queryRoomAll" resultType="Room" parameterType="String">    select * from t_room_info
+	</select>
+	<select id="queryRoomByAddress"  parameterType="String" resultType="Room">select * from t_room_info where room_address like CONCAT("%",#{room_address},'%')
+	</select>
+    <delete parameterType="Integer" id="deleteRoom">delete from  t_room_info where roomid=#{id}</delete>
+    <insert id="addNewRoom" parameterType="Room">
+        insert into t_room_info(room_address,room_usage,room_area,room_rend,create_time,remarks) values(#{room_address},#{room_usage},#{room_area},#{room_rend},#{create_time},#{remarks})
+    </insert>
+     <update id="modifyRoom" >
+        update  t_room_info set room_usage=#{room.room_usage},room_area=#{room.room_area},room_rend=#{room.room_rend},remarks=#{room.remarks} where roomid=#{room.roomid}
+    </update>  
+ </mapper>
