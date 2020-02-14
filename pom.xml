@@ -133,19 +133,38 @@
 		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-annotations</artifactId>
-		    <version>2.9.5</version>
-		</dependency>
+		    </dependency>
 		<dependency>
 		    <groupId>com.fasterxml.jackson.module</groupId>
 		    <artifactId>jackson-module-jaxb-annotations</artifactId>
-		    <version>2.9.5</version>
-		</dependency>
+		    </dependency>
 		<dependency>
 		    <groupId>org.apache.ibatis</groupId>
 		    <artifactId>ibatis-core</artifactId>
 		    <version>3.0</version>
 		</dependency>
-
+		<!-- pagehelper -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>1.2.7</version>
+		</dependency>
+		<!-- JSON: jackson -->
+		<dependency>
+		  <groupId>org.codehaus.jackson</groupId>
+		  <artifactId>jackson-core-asl</artifactId>
+		  <version>1.9.12</version>
+		</dependency>
+		<dependency>
+		  <groupId>org.codehaus.jackson</groupId>
+		  <artifactId>jackson-mapper-lgpl</artifactId>
+		  <version>1.9.12</version>
+		</dependency>
+		<dependency>
+		  <groupId>com.fasterxml.jackson.core</groupId>
+		  <artifactId>jackson-annotations</artifactId>
+		  <version>2.9.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>

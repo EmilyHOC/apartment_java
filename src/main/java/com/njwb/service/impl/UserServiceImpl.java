@@ -15,11 +15,7 @@ import com.njwb.service.UserService;
 import com.njwb.util.CheckPhone;
 import com.njwb.util.VoteUtil;
 
-/**
- * 用户业务接口实现类
- * @author meng
- *
- */
+
 @Service
 public class UserServiceImpl implements UserService{
 	@Autowired

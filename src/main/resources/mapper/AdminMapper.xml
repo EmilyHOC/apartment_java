@@ -6,34 +6,36 @@
 		<result property="admin_name" column="admin_name" />
 		<result property="admin_pwd" column="admin_pwd" />
 		<result property="admin_kind" column="admin_kind" />
+		<result property="admin_realname" column="admin_realname" />
+		<result property="admin_worktime" column="admin_worktime" />
+		<result property="admin_remarks" column="admin_remarks" />
 	</resultMap>
 	
-	<select id="queryByName" resultType="Admin" parameterType="String">
-		select * from t_admin where admin_name=#{admin_name}
+	<select id="queryByAdminName" resultType="Admin" parameterType="String" >
+		select * from t_admin_info 
+			<where>
+			<if test="admin_realname!= null">
+				 admin_realname like CONCAT("%",#{admin_realname},'%')
+			</if>
+		</where>
+		order by id
 	</select>
 
 	<select id="query" parameterType="Admin"  resultType="Admin">
-		select * from t_admin where  admin_name=#{admin_name} and admin_pwd=#{admin_pwd}
+		select * from t_admin_info where  admin_name=#{admin_name} and admin_pwd=#{admin_pwd}
 	</select>
 
   <select id="getAllAdmin" resultMap="AdminResult">
-        select * from t_admin where admin_kind = "admin"
+        select * from t_admin_info 
     </select>
     
-      <select id="getAllUser" resultMap="AdminResult">
-        select * from t_admin where admin_kind = "user"
-    </select>
-    
-    <update id="mod" parameterType="Admin">
-        update t_admin set admin_pwd=#{admin_pwd} where admin_name=#{admin_name}
-    </update>
-    <insert id="adminRegist" parameterType="Admin">
-        insert into t_admin(admin_name,admin_pwd,admin_kind) values(#{admin_name},#{admin_pwd},#{admin_kind})
+    <insert id="addNewAdmin" parameterType="Admin">
+        insert into t_admin_info(admin_name,admin_pwd,admin_kind,admin_realname,admin_worktime,admin_score,admin_remarks) values(#{admin_name},#{admin_pwd},#{admin_kind},#{admin_realname},#{admin_worktime}, #{admin_score},#{admin_remarks})
     </insert>
-       <update id="updateUser" parameterType="Admin">
-        update t_admin set admin_pwd=#{admin_pwd},admin_name=#{admin_name},admin_kind=#{admin_kind} where id=#{id}
+       <update id="modifyAdmin" parameterType="Admin">
+        update t_admin_info set admin_pwd=#{admin_pwd},admin_name=#{admin_name},admin_kind=#{admin_kind},admin_worktime=#{admin_worktime},admin_score=#{admin_score},admin_remarks=#{admin_remarks} where id=#{id}
     </update>
-      <delete id="removeUser" parameterType="Integer">
-        delete from t_admin where id=#{id}
+      <delete id="deleteAdmin" parameterType="Integer">
+        delete from t_admin_info where id=#{adminId}
     </delete>
  </mapper>

@@ -10,7 +10,14 @@
 	
 	<select id="queryRoomAll" resultType="Room" parameterType="String">    select * from t_room_info
 	</select>
-	<select id="queryRoomByAddress"  parameterType="String" resultType="Room">select * from t_room_info where room_address like CONCAT("%",#{room_address},'%')
+	<select id="queryRoomByAddress"  parameterType="String" resultType="Room">
+		select * from t_room_info 
+		<where>
+			<if test="room_address!= null">
+				 room_address like CONCAT("%",#{room_address},'%')
+			</if>
+		</where>
+		order by roomid
 	</select>
     <delete parameterType="Integer" id="deleteRoom">delete from  t_room_info where roomid=#{id}</delete>
     <insert id="addNewRoom" parameterType="Room">

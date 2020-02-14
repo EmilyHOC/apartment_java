@@ -13,6 +13,7 @@ import com.njwb.entity.Admin;
 import com.njwb.entity.Room;
 import com.njwb.entity.User;
 import com.njwb.exception.VoteException;
+import com.njwb.service.IpageService;
 import com.njwb.service.RoomService;
 
 @Service
@@ -38,10 +39,6 @@ public class RoomServiceImpl implements RoomService{
 	@Override
 	public List<Room> queryRoomByAddress(String room_address) throws  SQLException, VoteException{
 		List<Room> roomList = new ArrayList<Room>();
-		if("".equals(room_address)) {
-			throw new VoteException("查询内容为空");
-		}
-		System.out.println(room_address+"dao层address");
 		roomList = dao.queryRoomByAddress(room_address);
 		return roomList;
 	}
@@ -57,5 +54,4 @@ public class RoomServiceImpl implements RoomService{
 		dao.modifyRoom(room,roomid);
 		
 	}	
-
 }

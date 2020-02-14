@@ -1,17 +1,12 @@
 package com.njwb.controller;
 
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.fastjson.JSONObject;
 import com.njwb.entity.Return;
 import com.njwb.entity.Room;
-import com.njwb.entity.User;
 import com.njwb.exception.VoteException;
 import com.njwb.service.RoomService;
 @RestController
@@ -48,7 +42,6 @@ public class RoomController {
 	//新增房源
 	@RequestMapping(value = "/api/room/addNewRoom") @CrossOrigin("*") 
 	public Object addNewRoom(HttpServletRequest req) throws VoteException {
-		System.out.println(JSONObject.toJSONString(req.getParameterMap()));
 		String room_address = req.getParameter("room_address");
 		int room_usage = Integer.parseInt(req.getParameter("room_usage"));
 		double room_area = Double.parseDouble(req.getParameter("room_area"));
