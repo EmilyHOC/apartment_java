@@ -32,4 +32,14 @@ public class CustomServiceImpl implements CustomService {
         dao.searchCustomByAdminName(custom_name);
         return null;
     }
+    //修改用户信息
+    @Override
+    public void modifyCustom(Custom custom) {
+        dao.modifyCustom(custom);
+    }
+    //新增客户
+    @Override
+    public void addNewCustom(Custom custom) {
+        dao.addNewCustom(custom);
+    }
 }

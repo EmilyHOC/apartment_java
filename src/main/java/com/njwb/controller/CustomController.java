@@ -8,6 +8,7 @@ import com.njwb.service.CustomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -36,5 +37,23 @@ public class CustomController {
         custom.setCustom_name(custom_name);
         Return<List<Custom>> re = new Return<List<Custom>>(0,customService.searchCustomByAdminName(custom_name));
         return re;
+    }
+    //修改客户信息
+    @PutMapping("/api/custom/modifyCustom") @CrossOrigin("*")
+    public Object modifyRoom(@RequestBody Map<String,Custom> params) throws VoteException {
+        Custom custom = params.get("modifyInfo");
+        customService.modifyCustom(custom);
+        Return<Integer> re = new Return<Integer>(0,0);
+        return re;
+    }
+    //添加新客户
+    @RequestMapping(value="/api/custom/newCustom",method=RequestMethod.POST) @CrossOrigin("*")
+    public Object addNewAdmin(@RequestBody Map<String,Custom> params) throws VoteException, SQLException {
+        Custom custom = params.get("newCustom");
+        System.out.println(custom);
+        customService.addNewCustom(custom);
+        Return<Integer> re = new Return<Integer>(0,0);
+        return re;
+
     }
 }

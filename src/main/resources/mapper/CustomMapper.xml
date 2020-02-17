@@ -20,7 +20,7 @@
     <delete id="deleteCustom" parameterType="Integer">
         delete from t_custom_info where id=#{customId}
     </delete>
-    <select id="searchCustomByAdminName" resultType="Custom" parameterType="String" >
+    <select id="searchCustomByName" resultType="Custom" parameterType="String" >
         select * from t_custom_info
         <where>
             <if test="custom_name!= null">
@@ -29,4 +29,10 @@
         </where>
         order by id
     </select>
+    <update id="modifyCustom" parameterType="Custom">
+        update t_custom_info set custom_phone=#{custom_phone},custom_rendInfo=#{custom_rendInfo},custom_sign=#{custom_sign} where customId=#{customId}
+    </update>
+    <insert id="addNewCustom" parameterType="Custom">
+        insert into t_custom_info(custom_name,custom_sex,custom_age,custom_phone,custom_occupation,custom_rendInfo,custom_rendNeed,custom_sign,custom_introducer) values(#{custom_name},#{custom_sex},#{custom_age},#{custom_phone},#{custom_occupation}, #{custom_rendInfo},#{custom_rendNeed},#{custom_sign}, #{custom_introducer}})
+    </insert>
 </mapper>

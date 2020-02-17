@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.njwb.dao.AdminDao" >
-<resultMap type="Admin" id="AdminResult">
-		<id property="id" column="id" />
-		<result property="admin_name" column="admin_name" />
-		<result property="admin_pwd" column="admin_pwd" />
-		<result property="admin_kind" column="admin_kind" />
-		<result property="admin_realname" column="admin_realname" />
-		<result property="admin_worktime" column="admin_worktime" />
-		<result property="admin_remarks" column="admin_remarks" />
-	</resultMap>
-	
-	<select id="queryByAdminName" resultType="Admin" parameterType="String" >
-		select * from t_admin_info 
-			<where>
-			<if test="admin_realname!= null">
-				 admin_realname like CONCAT("%",#{admin_realname},'%')
-			</if>
-		</where>
-		order by id
-	</select>
+<mapper namespace="com.njwb.dao.AdminDao">
+    <resultMap type="Admin" id="AdminResult">
+        <id property="id" column="id"/>
+        <result property="admin_name" column="admin_name"/>
+        <result property="admin_pwd" column="admin_pwd"/>
+        <result property="admin_kind" column="admin_kind"/>
+        <result property="admin_realname" column="admin_realname"/>
+        <result property="admin_worktime" column="admin_worktime"/>
+        <result property="admin_remarks" column="admin_remarks"/>
+    </resultMap>
 
-	<select id="query" parameterType="Admin"  resultType="Admin">
+    <select id="queryByAdminName" resultType="Admin" parameterType="String">
+        select * from t_admin_info
+        <where>
+            <if test="admin_realname!= null">
+                admin_realname like CONCAT("%",#{admin_realname},'%')
+            </if>
+        </where>
+        order by id
+    </select>
+
+    <select id="query" parameterType="Admin" resultType="Admin">
 		select * from t_admin_info where  admin_name=#{admin_name} and admin_pwd=#{admin_pwd}
 	</select>
 
-  <select id="getAllAdmin" resultMap="AdminResult">
+    <select id="getAllAdmin" resultMap="AdminResult">
         select * from t_admin_info 
     </select>
-    
+
     <insert id="addNewAdmin" parameterType="Admin">
         insert into t_admin_info(admin_name,admin_pwd,admin_kind,admin_realname,admin_worktime,admin_score,admin_remarks) values(#{admin_name},#{admin_pwd},#{admin_kind},#{admin_realname},#{admin_worktime}, #{admin_score},#{admin_remarks})
     </insert>
-       <update id="modifyAdmin" parameterType="Admin">
+    <update id="modifyAdmin" parameterType="Admin">
         update t_admin_info set admin_pwd=#{admin_pwd},admin_name=#{admin_name},admin_kind=#{admin_kind},admin_worktime=#{admin_worktime},admin_score=#{admin_score},admin_remarks=#{admin_remarks} where id=#{id}
     </update>
-      <delete id="deleteAdmin" parameterType="Integer">
+    <delete id="deleteAdmin" parameterType="Integer">
         delete from t_admin_info where id=#{adminId}
     </delete>
- </mapper>
+</mapper>
