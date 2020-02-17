@@ -12,7 +12,7 @@ public interface CustomDao {
     //删除客户信息
     void deleteCustom(Integer customId);
     //根据名字搜索客户
-    void searchCustomByAdminName(String custom_name);
+    List<Custom> searchCustomByAdminName(String custom_name);
     //修改客户信息
     void modifyCustom(Custom custom);
     //新增客户

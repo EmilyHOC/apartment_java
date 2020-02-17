@@ -15,5 +15,5 @@ public interface CustomService {
     //修改用户信息
     void modifyCustom(Custom custom);
     //新增客户
-    void addNewCustom(Custom custom);
+	void addNewCustom(Custom custom);
 }
