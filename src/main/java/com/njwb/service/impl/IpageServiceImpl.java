@@ -9,7 +9,6 @@ public class IpageServiceImpl implements IpageService{
 
 	@Override
 	public List<Room> getRooms(Integer page, Integer limit) {
-		
 		return null;
 	}
 

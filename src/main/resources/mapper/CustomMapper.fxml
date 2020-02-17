@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.njwb.dao.CustomDao" >
+    <resultMap type="Custom" id="CustomResult">
+        <id property="id" column="id" />
+        <result property="custom_name" column="custom_name" />
+        <result property="custom_sex" column="custom_sex" />
+        <result property="custom_age" column="custom_age" />
+        <result property="custom_phone" column="custom_phone" />
+        <result property="custom_occupation" column="custom_occupation" />
+        <result property="custom_rendInfo" column="custom_rendInfo" />
+        <result property="custom_rendNeed" column="custom_rendNeed" />
+        <result property="custom_sign" column="custom_sign" />
+        <result property="custom_introducer" column="custom_introducer" />
+    </resultMap>
+
+    <select id="getAllCustom" resultType="Custom" parameterType="String">
+        select * from t_custom_info
+    </select>
+    <delete id="deleteCustom" parameterType="Integer">
+        delete from t_custom_info where id=#{customId}
+    </delete>
+    <select id="searchCustomByAdminName" resultType="Custom" parameterType="String" >
+        select * from t_custom_info
+        <where>
+            <if test="custom_name!= null">
+                custom_name like CONCAT("%",#{custom_name},'%')
+            </if>
+        </where>
+        order by id
+    </select>
+</mapper>
