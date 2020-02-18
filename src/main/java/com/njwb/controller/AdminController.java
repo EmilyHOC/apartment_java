@@ -120,5 +120,6 @@ public class AdminController {
 		adminService.deleteAdmin(adminId);
 		Return<Integer> re = new Return<Integer>(0,0);
 		return re;
-	}	
+	}
+
 }

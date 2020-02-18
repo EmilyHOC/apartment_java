@@ -1,8 +1,6 @@
 package com.njwb.service.impl;
 import com.njwb.dao.CustomDao;
-import com.njwb.entity.Admin;
 import com.njwb.entity.Custom;
-import com.njwb.entity.Room;
 import com.njwb.service.CustomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

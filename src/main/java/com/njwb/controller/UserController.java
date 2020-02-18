@@ -84,8 +84,5 @@ public class UserController {
 			return JSONObject.toJSON(new Return<Integer>(1,e.getMessage(),0));
 		}
 	}
-	
-	
-
 }
 	

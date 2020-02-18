@@ -1,6 +1,5 @@
 package com.njwb.controller;
 
-import com.njwb.entity.Admin;
 import com.njwb.entity.Custom;
 import com.njwb.entity.Return;
 import com.njwb.exception.VoteException;

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.njwb.dao.DeviceDao" >
+    <resultMap type="Device" id="DeviceResult">
+        <id property="id" column="id" />
+        <result property="device_address" column="device_address" />
+        <result property="device_kind" column="device_kind" />
+        <result property="device_num" column="device_num" />
+        <result property="device_rend" column="device_rend" />
+        <result property="device_price" column="device_price" />
+        <result property="device_return" column="device_return" />
+        <result property="device_start" column="device_start" />
+        <result property="device_returntime" column="device_returntime" />
+        <result property="device_pay" column="device_pay" />
+    </resultMap>
+
+    <select id="getAllDevice" resultType="Device" parameterType="String">
+        select * from t_device_info
+    </select>
+
+</mapper>
