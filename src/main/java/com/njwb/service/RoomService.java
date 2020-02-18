@@ -3,10 +3,7 @@ package com.njwb.service;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.njwb.entity.Room;
-import com.njwb.entity.User;
 import com.njwb.exception.VoteException;
 
 

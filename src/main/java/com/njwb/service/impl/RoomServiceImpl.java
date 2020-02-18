@@ -7,13 +7,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.njwb.dao.AdminDao;
 import com.njwb.dao.RoomDao;
-import com.njwb.entity.Admin;
 import com.njwb.entity.Room;
-import com.njwb.entity.User;
 import com.njwb.exception.VoteException;
-import com.njwb.service.IpageService;
 import com.njwb.service.RoomService;
 
 @Service

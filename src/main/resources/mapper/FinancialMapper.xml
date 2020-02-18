@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.njwb.dao.DeviceDao" >
+    <resultMap type="Financial" id="FinancialResult">
+        <id property="id" column="id" />
+        <result property="financial_address" column="financial_address" />
+        <result property="financial_rendtime" column="financial_rendtime" />
+        <result property="financial_price" column="financial_price" />
+        <result property="financial_premoney" column="financial_premoney" />
+        <result property="findancial_waterprice" column="findancial_waterprice" />
+        <result property="findancial_powerprice" column="findancial_powerprice" />
+        <result property="findancial_pay" column="findancial_pay" />
+    </resultMap>
+
+    <select id="getAllFinancialList" resultType="Financial" parameterType="String">
+        select * from t_financial_info
+    </select>
+
+</mapper>

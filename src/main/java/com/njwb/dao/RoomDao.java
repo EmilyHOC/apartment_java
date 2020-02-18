@@ -1,13 +1,11 @@
 package com.njwb.dao;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.njwb.entity.Room;
-import com.njwb.entity.User;
 
 @Mapper
 public interface RoomDao {
