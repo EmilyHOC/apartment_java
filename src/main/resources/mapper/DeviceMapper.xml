@@ -11,11 +11,25 @@
         <result property="device_return" column="device_return" />
         <result property="device_start" column="device_start" />
         <result property="device_returntime" column="device_returntime" />
-        <result property="device_pay" column="device_pay" />
+         <result property="device_status" column="device_status" />
     </resultMap>
 
     <select id="getAllDevice" resultType="Device" parameterType="String">
         select * from t_device_info
     </select>
-
+	<insert id="addNewDevice" parameterType="Device">
+        insert into t_device_info(device_address,device_kind,device_num,device_rend,device_price,device_return,device_start,device_returntime,device_status) values(#{device_address},#{device_kind},#{device_num},#{device_rend},#{device_price},#{device_return}, #{device_start},#{device_returntime},#{device_status})
+    </insert>
+     <select id="searchOrderById" resultType="Device" parameterType="String" >
+        select * from t_device_info 
+        <where>
+			<if test="device_Id!= null">
+				 device_Id like CONCAT("%",#{device_Id},'%')
+			</if>
+		</where>
+		order by device_Id
+    </select>
+    <update id="changeDeviceStatus" parameterType="String" >
+        update t_device_info set device_status=#{device_status},device_returntime=#{device_return} where device_Id=#{deviceId}
+    </update>
 </mapper>

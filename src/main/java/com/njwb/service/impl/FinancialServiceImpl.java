@@ -1,9 +1,8 @@
 package com.njwb.service.impl;
 
-import com.njwb.dao.DeviceDao;
+
 import com.njwb.dao.FinancialDao;
 import com.njwb.entity.Financial;
-import com.njwb.entity.Room;
 import com.njwb.service.FinancialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

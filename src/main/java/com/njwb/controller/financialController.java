@@ -17,7 +17,7 @@ public class financialController {
     @Autowired
     private FinancialService financialService;
     //查询所有结算信息
-    @RequestMapping("/api/custom/getAllCustom") @CrossOrigin("*")
+    @RequestMapping("/api/financial/getAllFinancialList") @CrossOrigin("*")
     public Object getAllFinancialList() throws VoteException {
         Return<List<Financial>> re = new Return<List<Financial>>(0,financialService.getAllFinancialList());
         return re;
