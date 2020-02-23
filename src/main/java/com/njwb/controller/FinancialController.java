@@ -1,6 +1,5 @@
 package com.njwb.controller;
 
-import com.njwb.entity.Device;
 import com.njwb.entity.Financial;
 import com.njwb.entity.Return;
 import com.njwb.exception.VoteException;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class financialController {
+public class FinancialController {
     @Autowired
     private FinancialService financialService;
     //查询所有结算信息
